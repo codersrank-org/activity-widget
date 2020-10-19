@@ -1,0 +1,192 @@
+:host {
+  --font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+  --label-font-size: 9px;
+  --label-text-color: #999ea4;
+  --legend-font-size: 12px;
+  --legend-text-color: #999ea4;
+  --legend-item-width: 14px;
+  --legend-item-height: 14px;
+  --legend-margin: 1em 0 0 0;
+  --bg-color-0: #f6f6f6;
+  --bg-color-1: rgba(80, 176, 186, 0.3);
+  --bg-color-2: rgba(80, 176, 186, 0.6);
+  --bg-color-3: rgba(80, 176, 186, 1);
+  --bg-color-4: #24565a;
+  --border-color-0: transparent;
+  --border-color-1: transparent;
+  --border-color-2: transparent;
+  --border-color-3: transparent;
+  --border-color-4: transparent;
+  --svg-width: 100%;
+  --svg-height: auto;
+  --preloader-color: #72a0a8;
+  --tooltip-font-size: 14px;
+  width: 100%;
+  display: block;
+  position: relative;
+}
+.codersrank-activity {
+  font-family: var(--font-family);
+  position: relative;
+  &-preloader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 32px;
+    height: 32px;
+    margin: -16px 0 0 -16px;
+    border: 3px solid var(--preloader-color);
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    box-sizing: border-box;
+    animation: preloader 1s infinite linear;
+  }
+
+  &-chart {
+    width: 100%;
+    position: relative;
+    svg {
+      width: var(--svg-width);
+      height: var(--svg-height);
+    }
+  }
+
+  &-day {
+    fill: var(--bg-color-0);
+    stroke-width: 1;
+    stroke: var(--border-color-0);
+  }
+  &-day-1 {
+    fill: var(--bg-color-1);
+    stroke: var(--border-color-1);
+  }
+  &-day-2 {
+    fill: var(--bg-color-2);
+    stroke: var(--border-color-2);
+  }
+  &-day-3 {
+    fill: var(--bg-color-3);
+    stroke: var(--border-color-3);
+  }
+  &-day-4 {
+    fill: var(--bg-color-4);
+    stroke: var(--border-color-4);
+  }
+  &-day-disabled {
+    display: none;
+  }
+  &-wday,
+  &-month {
+    font-size: var(--label-font-size);
+    fill: var(--label-text-color);
+  }
+  &-wday {
+    &:nth-child(2n) {
+      display: none;
+    }
+  }
+  &-tooltip {
+    text-align: left;
+    position: absolute;
+    background: #000;
+    transform: translateX(-50%) translateY(-100%);
+    border-radius: 4px;
+    color: #fff;
+    font-family: var(--font-family);
+    padding: 8px;
+    font-size: var(--tooltip-font-size);
+    white-space: nowrap;
+    pointer-events: none;
+    margin-top: -10px;
+    width: 200px;
+    line-height: 1.5;
+    &-angle {
+      width: 0px;
+      height: 0px;
+      position: absolute;
+      left: 50%;
+      top: 100%;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid #000;
+      margin-left: -5px;
+    }
+    &-header {
+      padding-bottom: 4px;
+      margin-bottom: 4px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    }
+    &-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      li {
+        display: flex;
+        align-items: center;
+      }
+      i {
+        text-align: center;
+        font-size: 16px;
+        width: 16px;
+        height: 16px;
+        margin-right: 8px;
+        display: block;
+        svg {
+          display: block;
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
+  }
+  &-legend {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: var(--legend-text-color);
+    line-height: 1;
+    font-size: var(--legend-font-size);
+    margin: var(--legend-margin);
+    &-label:first-child {
+      margin-right: 8px;
+    }
+    &-label:last-child {
+      margin-left: 8px;
+    }
+    &-item {
+      box-sizing: border-box;
+      width: var(--legend-item-width);
+      height: var(--legend-item-height);
+      background-color: var(--bg-color-0);
+      border: 1px solid var(--border-color-0);
+      margin: 0 2px;
+      border-radius: 2px;
+      &-1 {
+        background-color: var(--bg-color-1);
+        border-color: var(--border-color-1);
+      }
+      &-2 {
+        background-color: var(--bg-color-2);
+        border-color: var(--border-color-2);
+      }
+      &-3 {
+        background-color: var(--bg-color-3);
+        border-color: var(--border-color-3);
+      }
+      &-4 {
+        background-color: var(--bg-color-4);
+        border-color: var(--border-color-4);
+      }
+    }
+  }
+}
+
+@keyframes preloader {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

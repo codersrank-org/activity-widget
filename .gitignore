@@ -102,3 +102,8 @@ dist
 
 # TernJS port file
 .tern-port
+
+dev/*.js
+dev/*.map
+package/*.js
+package/*.map
