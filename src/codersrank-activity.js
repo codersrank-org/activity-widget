@@ -4,6 +4,7 @@ import { renderError } from './shared/render-error';
 import { renderLoading } from './shared/render-loading';
 import { icons } from './shared/icons';
 
+// eslint-disable-next-line
 const COMPONENT_TAG = 'codersrank-activity';
 const STATE_IDLE = 0;
 const STATE_LOADING = 1;
@@ -15,6 +16,7 @@ const STYLES = `$_STYLES_$`;
 
 const tempDiv = document.createElement('div');
 
+// eslint-disable-next-line
 class CodersRankActivity extends HTMLElement {
   constructor() {
     super();
@@ -49,11 +51,11 @@ class CodersRankActivity extends HTMLElement {
   }
 
   get weeks() {
-    return this.getAttribute('weeks') || 52;
+    return Math.max(parseInt(this.getAttribute('weeks') || 52, 10), 52);
   }
 
   get renderWidth() {
-    const renderWidth = this.getAttribute('render-width');
+    const renderWidth = parseInt(this.getAttribute('render-width') || 0, 10);
     if (!renderWidth && this.weeks < 52) {
       return 800 / (52 / this.weeks);
     }
@@ -72,6 +74,10 @@ class CodersRankActivity extends HTMLElement {
     return false;
   }
 
+  get step() {
+    return parseInt(this.getAttribute('step') || 10, 10);
+  }
+
   render() {
     const {
       username,
@@ -83,6 +89,7 @@ class CodersRankActivity extends HTMLElement {
       renderWidth,
       legend,
       labels,
+      step,
     } = this;
     const ctx = {
       data,
@@ -90,6 +97,7 @@ class CodersRankActivity extends HTMLElement {
       renderWidth,
       legend,
       labels,
+      step,
     };
 
     if (!username || !mounted) return;
@@ -183,7 +191,7 @@ class CodersRankActivity extends HTMLElement {
     const rectElRect = rectEl.getBoundingClientRect();
     const tooltipEl = tempDiv.querySelector('.codersrank-activity-tooltip');
     let left = rectElRect.left - widgetElRect.left;
-    let diff = 0;
+    let diff = -5;
     if (left < 110) {
       diff = -5 - (110 - left);
       left = 110;
@@ -239,6 +247,4 @@ class CodersRankActivity extends HTMLElement {
   }
 }
 
-if (window.customElements && !window.customElements.get(COMPONENT_TAG)) {
-  window.customElements.define(COMPONENT_TAG, CodersRankActivity);
-}
+// EXPORT

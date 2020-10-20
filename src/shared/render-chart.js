@@ -5,6 +5,7 @@ export const renderChart = ({
   legend,
   labels,
   preloader,
+  step,
 } = {}) => {
   const width = renderWidth;
   const spacing = 4;
@@ -23,8 +24,8 @@ export const renderChart = ({
     'Nov',
     'Dec',
   ];
-  const xOffset = 25;
-  const yOffset = 18;
+  const xOffset = labels ? 25 : 0;
+  const yOffset = labels ? 18 : 0;
 
   const weeksArray = [];
   for (let i = 0; i < weeks; i += 1) weeksArray.push(i);
@@ -97,11 +98,10 @@ export const renderChart = ({
     const classes = ['codersrank-activity-day'];
     const date = dayDate(weekIndex, dayIndex);
     const activities = activitiesInDay(date);
-
-    if (activities >= 30) classes.push('codersrank-activity-day-4');
-    else if (activities >= 20) classes.push('codersrank-activity-day-3');
-    else if (activities >= 10) classes.push('codersrank-activity-day-2');
-    else if (activities > 0) classes.push('codersrank-activity-day-1');
+    const level = activities > 0 ? Math.min(Math.floor(activities / step), 3) + 1 : 0;
+    if (level) {
+      classes.push(`codersrank-activity-day-${level}`);
+    }
     if (isDayDisabled(weekIndex, dayIndex)) {
       classes.push('codersrank-activity-day-disabled');
     }
