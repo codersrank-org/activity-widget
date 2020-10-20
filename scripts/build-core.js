@@ -1,5 +1,6 @@
 // const exec = require('exec-sh');
 const fs = require('fs');
+const exec = require('exec-sh');
 const { rollup } = require('rollup');
 const { default: babel } = require('@rollup/plugin-babel');
 const replace = require('@rollup/plugin-replace');
@@ -10,29 +11,57 @@ const cleanCSS = require('./clean-css.js');
 const scss = require('./scss.js');
 const banner = require('./banner');
 
-const build = async () => {
-  const filename = 'codersrank-activity';
+const UMD_EXPORT = `
+if (window.customElements && !window.customElements.get(COMPONENT_TAG)) {
+  window.customElements.define(COMPONENT_TAG, CodersRankActivity);
+}
+`;
+
+const ESM_EXPORT = `
+export default CodersRankActivity;
+`;
+
+const CJS_EXPORT = `
+module.exports = CodersRankActivity;
+`;
+
+const buildModule = async (cssContent, format) => {
   const env = process.env.NODE_ENV || 'development';
   const outputDir = env === 'development' ? 'dev' : 'package';
 
-  let cssContent = fs.readFileSync('./src/widget.scss', 'utf-8');
-  cssContent = await scss(cssContent);
-  cssContent = await autoprefixer(cssContent);
-  cssContent = await cleanCSS(cssContent);
+  await exec.promise(`rm -rf ${outputDir}/${format}/*.js`);
+  await exec.promise(`rm -rf ${outputDir}/${format}/shared/*.js`);
+  await exec.promise(`MODULES=${format} npx babel src --out-dir ${outputDir}/${format}`);
+
+  const fileContent = fs
+    .readFileSync(`./${outputDir}/${format}/codersrank-activity.js`, 'utf8')
+    .replace('$_STYLES_$', cssContent)
+    .replace('// EXPORT', format === 'esm' ? ESM_EXPORT : CJS_EXPORT);
+  fs.writeFileSync(`./${outputDir}/${format}/codersrank-activity.js`, fileContent);
+};
+
+const buildUMD = async (cssContent) => {
+  const env = process.env.NODE_ENV || 'development';
+  const filename = 'codersrank-activity';
+  const outputDir = env === 'development' ? 'dev' : 'package';
+
+  await exec.promise(`rm -rf ${outputDir}/*.js`);
+  await exec.promise(`rm -rf ${outputDir}/*.map`);
 
   const bundle = await rollup({
-    input: './src/widget.js',
+    input: './src/codersrank-activity.js',
     plugins: [
       replace({
         delimiters: ['', ''],
         $_STYLES_$: cssContent,
+        '// EXPORT': UMD_EXPORT,
       }),
       babel({ babelHelpers: 'bundled' }),
     ],
   });
   const bundleResult = await bundle.write({
     format: 'umd',
-    name: 'CodersRankWidgetAcitivity',
+    name: 'CodersRankAcitivity',
     strict: true,
     sourcemap: true,
     sourcemapFile: `./${outputDir}/${filename}.js.map`,
@@ -55,6 +84,17 @@ const build = async () => {
 
   fs.writeFileSync(`./${outputDir}/${filename}.min.js`, minified.code);
   fs.writeFileSync(`./${outputDir}/${filename}.min.js.map`, minified.map);
+};
+
+const build = async () => {
+  let cssContent = fs.readFileSync('./src/codersrank-activity.scss', 'utf-8');
+  cssContent = await scss(cssContent);
+  cssContent = await autoprefixer(cssContent);
+  cssContent = await cleanCSS(cssContent);
+
+  await buildUMD(cssContent);
+  await buildModule(cssContent, 'esm');
+  await buildModule(cssContent, 'cjs');
 };
 
 module.exports = build;

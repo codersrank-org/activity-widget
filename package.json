@@ -1,9 +1,6 @@
 {
   "name": "codersrank-activity-source",
-  "private": true,
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
     "build:dev": "cross-env NODE_ENV=development node scripts/build",
     "build:prod": "cross-env NODE_ENV=production node scripts/build",
@@ -23,7 +20,7 @@
     "type": "git",
     "url": "git+https://github.com/codersrank-org/widget-activity.git"
   },
-  "author": "",
+  "author": "CodersRank Ltd.",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/codersrank-org/widget-activity/issues"

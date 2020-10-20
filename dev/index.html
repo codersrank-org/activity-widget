@@ -4,13 +4,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>CodersRank Activity Widget</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Open Sans, Helvetica, Helvetica Neue, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    main {
+      max-width: 800px;
+      padding: 0 40px;
+      margin: 40px auto;
+    }
+
+    .codersrank-activity-red {
+      --bg-color-0: #f6f6f6;
+      --bg-color-1: rgba(255, 0, 0, 0.25);
+      --bg-color-2: rgba(255, 0, 0, 0.5);
+      --bg-color-3: rgba(255, 0, 0, 0.75);
+      --bg-color-4: rgba(255, 0, 0, 1);
+    }
+
+    .dark-layout {
+      background: #121212;
+      padding: 40px;
+      margin: 1em -40px;
+      color: #fff;
+    }
+
+    .dark-layout codersrank-activity {
+      --bg-color-0: rgba(255, 255, 255, 0.15);
+    }
+  </style>
 </head>
 
 <body>
-  <div id="app">
-    <codersrank-activity username="nolimits4web" weeks="52" legend labels />
-  </div>
+  <main>
+    <h1>CodersRank Activity Widget</h1>
+    <h3>With legend, labels and tooltip</h3>
+    <codersrank-activity username="nolimits4web" legend labels tooltip></codersrank-activity>
+    <h3>Without labels and legend</h3>
+    <codersrank-activity username="nolimits4web" tooltip></codersrank-activity>
+    <h3>Last 6 months only</h3>
+    <codersrank-activity style="max-width: 400px;" username="nolimits4web" labels tooltip weeks="26">
+    </codersrank-activity>
+    <h3>Custom colors</h3>
+    <codersrank-activity class="codersrank-activity-red" username="nolimits4web" labels tooltip legend>
+    </codersrank-activity>
+
+    <div class="dark-layout">
+      <h3>On dark layout</h3>
+      <codersrank-activity class="codersrank-activity-dark" username="nolimits4web" labels tooltip legend>
+    </div>
+  </main>
   <script src="codersrank-activity.js"></script>
 </body>
 

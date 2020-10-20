@@ -1,0 +1,19 @@
+{
+  "name": "@codersrank/activity",
+  "version": "1.0.0",
+  "description": "CodersRank activity widget",
+  "main": "cjs/codersrank-activity.js",
+  "module": "esm/codersrank-activity.js",
+  "jsnext:main": "esm/codersrank-activity.js",
+  "browser": "codersrank-activity.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codersrank-org/widget-activity.git"
+  },
+  "author": "CodersRank Ltd.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/codersrank-org/widget-activity/issues"
+  },
+  "homepage": "https://github.com/codersrank-org/widget-activity#readme"
+}
