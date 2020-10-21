@@ -37,7 +37,7 @@ class CodersRankActivity extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ['username', 'weeks', 'render-width', 'legend', 'labels'];
+    return ['username', 'weeks', 'svg-width', 'legend', 'labels'];
   }
 
   get tooltip() {
@@ -54,12 +54,12 @@ class CodersRankActivity extends HTMLElement {
     return Math.max(parseInt(this.getAttribute('weeks') || 52, 10), 52);
   }
 
-  get renderWidth() {
-    const renderWidth = parseInt(this.getAttribute('render-width') || 0, 10);
-    if (!renderWidth && this.weeks < 52) {
+  get svgWidth() {
+    const svgWidth = parseInt(this.getAttribute('svg-width') || 0, 10);
+    if (!svgWidth && this.weeks < 52) {
       return 800 / (52 / this.weeks);
     }
-    return renderWidth || 800;
+    return svgWidth || 800;
   }
 
   get legend() {
@@ -86,7 +86,7 @@ class CodersRankActivity extends HTMLElement {
       shadowEl,
       data,
       weeks,
-      renderWidth,
+      svgWidth,
       legend,
       labels,
       step,
@@ -94,7 +94,7 @@ class CodersRankActivity extends HTMLElement {
     const ctx = {
       data,
       weeks,
-      renderWidth,
+      svgWidth,
       legend,
       labels,
       step,

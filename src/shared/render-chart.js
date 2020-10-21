@@ -1,13 +1,13 @@
 export const renderChart = ({
   data,
   weeks,
-  renderWidth,
+  svgWidth,
   legend,
   labels,
   preloader,
   step,
 } = {}) => {
-  const width = renderWidth;
+  const width = svgWidth;
   const spacing = 4;
   const wdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
   const months = [

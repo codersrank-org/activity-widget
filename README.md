@@ -44,15 +44,15 @@ As it is a web component the usage is pretty simple, just add widget HTML tag wi
 
 Widget supports following properties as HTML element attributes:
 
-| Name           | Type      | Default | Description                                         |
-| -------------- | --------- | ------- | --------------------------------------------------- |
-| `username`     | `string`  |         | Your [CodersRank](https://codersrank.io) username   |
-| `weeks`        | `number`  | `52`    | Amount of weeks to be rendered in chart (max `52`). |
-| `labels`       | `boolean` | `false` | Display chart labels (months and days of the week)  |
-| `legend`       | `boolean` | `false` | Display legend below the chart                      |
-| `tooltip`      | `boolean` | `false` | Enables tooltip with number of activities per day   |
-| `step`         | `number`  | `10`    | Number of activities for division by colors         |
-| `render-width` | `number`  | `800`   | Render width of chart's SVG element                 |
+| Name        | Type      | Default | Description                                         |
+| ----------- | --------- | ------- | --------------------------------------------------- |
+| `username`  | `string`  |         | Your [CodersRank](https://codersrank.io) username   |
+| `weeks`     | `number`  | `52`    | Amount of weeks to be rendered in chart (max `52`). |
+| `labels`    | `boolean` | `false` | Display chart labels (months and days of the week)  |
+| `legend`    | `boolean` | `false` | Display legend below the chart                      |
+| `tooltip`   | `boolean` | `false` | Enables tooltip with number of activities per day   |
+| `step`      | `number`  | `10`    | Number of activities for division by colors         |
+| `svg-width` | `number`  | `800`   | Render width of chart's SVG element                 |
 
 For example, to enable labels, legend and tooltip:
 
