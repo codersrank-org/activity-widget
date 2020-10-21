@@ -30,7 +30,7 @@ Widget can also be downloaded or linked directly from CDN:
 <script src="https://unpkg.com/@codersrank/activity@x.x.x/codersrank-activity.min.js"></script>
 ```
 
-In this case it is not required to register web component, it is already registered to be use as `<codersrank-activity>` element.
+In this case it is not required to register web component, it is already registered as `<codersrank-activity>` element.
 
 ## Usage
 
