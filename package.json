@@ -18,14 +18,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/codersrank-org/activity-widget.git"
+    "url": "git+https://github.com/codersrank-org/activity.git"
   },
   "author": "CodersRank Ltd.",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/codersrank-org/activity-widget/issues"
+    "url": "https://github.com/codersrank-org/activity/issues"
   },
-  "homepage": "https://github.com/codersrank-org/activity-widget#readme",
+  "homepage": "https://github.com/codersrank-org/activity#readme",
   "devDependencies": {
     "@babel/cli": "^7.12.1",
     "@babel/core": "^7.12.3",
