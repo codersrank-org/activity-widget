@@ -8,14 +8,14 @@
   "browser": "codersrank-activity.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/codersrank-org/activity.git"
+    "url": "git+https://github.com/codersrank-org/activity-widget.git"
   },
   "author": "CodersRank Ltd.",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/codersrank-org/activity/issues"
+    "url": "https://github.com/codersrank-org/activity-widget/issues"
   },
-  "homepage": "https://github.com/codersrank-org/activity#readme",
+  "homepage": "https://github.com/codersrank-org/activity-widget#readme",
   "keywords": [
     "codersrank",
     "activity",
