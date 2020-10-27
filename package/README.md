@@ -91,6 +91,15 @@ There are following CSS Custom Properties are available:
 | `--preloader-color`    | `#72a0a8`                                                 |
 | `--tooltip-font-size`  | `14px`                                                    |
 
+For example, to change legend text color to `red` and font-size to `10px`, add this to CSS stylesheet:
+
+```css
+codersrank-activity {
+  --legend-text-color: red;
+  --legend-font-size: 10px;
+}
+```
+
 ## Contribution
 
 Yes please! See the [contributing guidelines](https://github.com/codersrank-org/activity-widget/blob/master/CONTRIBUTING.md) for details.
