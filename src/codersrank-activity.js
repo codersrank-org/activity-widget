@@ -69,12 +69,24 @@ class CodersRankActivity extends HTMLElement {
     return false;
   }
 
+  set tooltip(value) {
+    this.setAttribute('tooltip', value);
+  }
+
   get username() {
     return this.getAttribute('username');
   }
 
+  set username(value) {
+    this.setAttribute('username', value);
+  }
+
   get weeks() {
     return Math.max(parseInt(this.getAttribute('weeks') || 52, 10), 52);
+  }
+
+  set weeks(value) {
+    this.setAttribute('weeks', value);
   }
 
   get svgWidth() {
@@ -85,10 +97,22 @@ class CodersRankActivity extends HTMLElement {
     return svgWidth || 800;
   }
 
+  set svgWidth(value) {
+    this.setAttribute('svg-width', value);
+  }
+
+  set ['svg-width'](value) {
+    this.setAttribute('svg-width', value);
+  }
+
   get legend() {
     const legend = this.getAttribute('legend');
     if (legend === '' || legend === 'true') return true;
     return false;
+  }
+
+  set legend(value) {
+    this.setAttribute('legend', value);
   }
 
   get labels() {
@@ -97,8 +121,16 @@ class CodersRankActivity extends HTMLElement {
     return false;
   }
 
+  set labels(value) {
+    this.setAttribute('labels', value);
+  }
+
   get step() {
     return parseInt(this.getAttribute('step') || 10, 10);
+  }
+
+  set step(value) {
+    this.setAttribute('step', value);
   }
 
   render() {
