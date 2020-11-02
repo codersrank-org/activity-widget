@@ -1,11 +1,11 @@
 {
   "name": "@codersrank/activity",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "description": "CodersRank activity widget",
   "main": "cjs/codersrank-activity.js",
   "module": "esm/codersrank-activity.js",
   "jsnext:main": "esm/codersrank-activity.js",
-  "browser": "codersrank-activity.js",
+  "browser": "esm/codersrank-activity.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/codersrank-org/activity-widget.git"
