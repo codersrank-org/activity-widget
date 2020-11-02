@@ -65,6 +65,14 @@
     </div>
   </main>
   <script src="codersrank-activity.js"></script>
+  <script>
+    document.querySelector('codersrank-activity').addEventListener('error', (e) => {
+      console.log('Error', e.detail)
+    });
+    document.querySelector('codersrank-activity').addEventListener('data', (e) => {
+      console.log('Data', e.detail)
+    });
+  </script>
 </body>
 
 </html>

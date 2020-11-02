@@ -17,7 +17,6 @@ export const fetchData = (username) => {
     })
     .catch((err) => {
       // eslint-disable-next-line
-      console.error(err);
       return Promise.reject(err);
     });
 };

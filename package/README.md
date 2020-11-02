@@ -100,6 +100,50 @@ codersrank-activity {
 }
 ```
 
+## Events
+
+Widget element supports the following events:
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Detail</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>error</code></td>
+      <td>Will be fired on data request error</td>
+      <td><code>event.detail</code> will contain an error object</td>
+    </tr>
+    <tr>
+      <td><code>data</code></td>
+      <td>Will be fired right after data request</td>
+      <td>
+        <code>event.detail</code> will contain an object with <code>data</code> and <code>total</code> properties.
+        <p><code>total</code> property contains number of total activities</p>
+        <p><code>data</code> object contains information about activities by dates</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+For example:
+
+```html
+<codersrank-activity id="activity" ...></codersrank-activity>
+```
+
+```js
+function onData(event) {
+  const total = event.detail.total;
+  console.log(`${total} activities in the last year`);
+}
+document.querySelector('#activity').addEventListener('data', onData);
+```
+
 ## Contribution
 
 Yes please! See the [contributing guidelines](https://github.com/codersrank-org/activity-widget/blob/master/CONTRIBUTING.md) for details.

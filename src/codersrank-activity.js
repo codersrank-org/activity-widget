@@ -36,6 +36,29 @@ class CodersRankActivity extends HTMLElement {
     this.data = null;
   }
 
+  // eslint-disable-next-line
+  getTotalActivities(data = {}) {
+    let total = 0;
+    Object.keys(data).forEach((date) => {
+      Object.keys(data[date]).forEach((source) => {
+        total += data[date][source] || 0;
+      });
+    });
+    return total;
+  }
+
+  emitData(data = {}) {
+    const event = new CustomEvent('data', {
+      detail: { data, total: this.getTotalActivities(data) },
+    });
+    this.dispatchEvent(event);
+  }
+
+  emitError(err) {
+    const event = new CustomEvent('error', { detail: err });
+    this.dispatchEvent(event);
+  }
+
   static get observedAttributes() {
     return ['username', 'weeks', 'svg-width', 'legend', 'labels'];
   }
@@ -125,11 +148,13 @@ class CodersRankActivity extends HTMLElement {
     this.render();
     fetchData(username)
       .then((data) => {
+        this.emitData(data);
         this.data = data;
         this.state = STATE_SUCCESS;
         this.render();
       })
-      .catch(() => {
+      .catch((err) => {
+        this.emitError(err);
         this.state = STATE_ERROR;
         this.render();
       });
