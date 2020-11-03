@@ -14,13 +14,12 @@ const STATE_SUCCESS = 3;
 // eslint-disable-next-line
 const STYLES = `$_STYLES_$`;
 
-const tempDiv = document.createElement('div');
-
 // eslint-disable-next-line
 class CodersRankActivity extends HTMLElement {
   constructor() {
     super();
 
+    this.tempDiv = document.createElement('div');
     this.shadowEl = this.attachShadow({ mode: 'closed' });
 
     this.stylesEl = document.createElement('style');
@@ -82,7 +81,7 @@ class CodersRankActivity extends HTMLElement {
   }
 
   get weeks() {
-    return Math.max(parseInt(this.getAttribute('weeks') || 52, 10), 52);
+    return Math.min(parseInt(this.getAttribute('weeks') || 52, 10), 52);
   }
 
   set weeks(value) {
@@ -145,6 +144,7 @@ class CodersRankActivity extends HTMLElement {
       legend,
       labels,
       step,
+      tempDiv,
     } = this;
     const ctx = {
       data,
@@ -171,6 +171,8 @@ class CodersRankActivity extends HTMLElement {
     widgetEl = tempDiv.querySelector('.codersrank-activity');
     if (!widgetEl) return;
     this.widgetEl = widgetEl;
+    this.detachEvents();
+    this.attachEvents();
     shadowEl.appendChild(widgetEl);
   }
 
@@ -232,21 +234,21 @@ class CodersRankActivity extends HTMLElement {
   }
 
   showTooltip(date) {
-    if (!this.data || !date || !this.tooltip) return;
+    if (!this.data || !date || !this.tooltip || !this.widgetEl) return;
     const data = this.data[date];
     if (!data) return;
 
     const rectEl = this.shadowEl.querySelector(`[data-date="${date}"]`);
     if (!rectEl) return;
-    tempDiv.innerHTML = `
+    this.tempDiv.innerHTML = `
       <div class="codersrank-activity-tooltip">
         ${this.tooltipText(date)}
         <div class="codersrank-activity-tooltip-angle"></div>
       </div>
     `;
-    const widgetElRect = this.widgetEl.getBoundingClientRect();
+    const widgetElRect = this.getBoundingClientRect();
     const rectElRect = rectEl.getBoundingClientRect();
-    const tooltipEl = tempDiv.querySelector('.codersrank-activity-tooltip');
+    const tooltipEl = this.tempDiv.querySelector('.codersrank-activity-tooltip');
     let left = rectElRect.left - widgetElRect.left;
     let diff = -5;
     if (left < 110) {
@@ -258,19 +260,21 @@ class CodersRankActivity extends HTMLElement {
       left = widgetElRect.width - 110;
     }
 
+    diff = Math.max(Math.min(diff, 105), -105);
+
     tooltipEl.style.left = `${left}px`;
     tooltipEl.style.top = `${rectElRect.top - widgetElRect.top}px`;
     tooltipEl.querySelector(
       '.codersrank-activity-tooltip-angle',
     ).style.marginLeft = `${diff}px`;
-    this.widgetEl.appendChild(tooltipEl);
+    this.shadowEl.appendChild(tooltipEl);
   }
 
   hideTooltip() {
-    if (!this.tooltip) return;
+    if (!this.tooltip || !this.widgetEl) return;
     const tooltipEl = this.shadowEl.querySelector('.codersrank-activity-tooltip');
     if (!tooltipEl) return;
-    this.widgetEl.removeChild(tooltipEl);
+    this.shadowEl.removeChild(tooltipEl);
   }
 
   onMouseEnter(e) {
@@ -289,18 +293,27 @@ class CodersRankActivity extends HTMLElement {
     this.loadAndRender();
   }
 
+  attachEvents() {
+    if (!this.widgetEl) return;
+    this.widgetEl.addEventListener('mouseenter', this.onMouseEnter, true);
+    this.widgetEl.addEventListener('mouseleave', this.onMouseLeave, true);
+  }
+
+  detachEvents() {
+    if (!this.widgetEl) return;
+    this.widgetEl.removeEventListener('mouseenter', this.onMouseEnter, true);
+    this.widgetEl.removeEventListener('mouseleave', this.onMouseLeave, true);
+  }
+
   connectedCallback() {
     this.width = this.offsetWidth;
     this.mounted = true;
     this.loadAndRender();
-    this.shadowEl.addEventListener('mouseenter', this.onMouseEnter, true);
-    this.shadowEl.addEventListener('mouseleave', this.onMouseLeave, true);
   }
 
   disconnectedCallback() {
     this.mounted = false;
-    this.shadowEl.removeEventListener('mouseenter', this.onMouseEnter);
-    this.shadowEl.removeEventListener('mouseleave', this.onMouseLeave);
+    this.detachEvents();
   }
 }
 
