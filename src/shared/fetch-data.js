@@ -1,10 +1,11 @@
-const ENDPOINT = 'https://grpcgateway.codersrank.io/candidate/activity';
 const cache = {};
 
-export const fetchData = (username) => {
+export const fetchData = (username, id) => {
   if (cache[username]) return Promise.resolve(cache[username]);
+  let endpoint = `https://grpcgateway.codersrank.io/candidate/activity/${username || id}`;
+  if (id) endpoint += '?id=true';
 
-  return fetch(`${ENDPOINT}/${username}`, {
+  return fetch(endpoint, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

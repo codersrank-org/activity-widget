@@ -59,7 +59,7 @@ class CodersRankActivity extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ['username', 'weeks', 'svg-width', 'legend', 'labels'];
+    return ['username', 'weeks', 'svg-width', 'legend', 'labels', 'id'];
   }
 
   get tooltip() {
@@ -70,6 +70,14 @@ class CodersRankActivity extends HTMLElement {
 
   set tooltip(value) {
     this.setAttribute('tooltip', value);
+  }
+
+  get id() {
+    return this.getAttribute('id');
+  }
+
+  set id(value) {
+    this.setAttribute('id', value);
   }
 
   get username() {
@@ -135,6 +143,7 @@ class CodersRankActivity extends HTMLElement {
   render() {
     const {
       username,
+      id,
       mounted,
       state,
       shadowEl,
@@ -155,7 +164,7 @@ class CodersRankActivity extends HTMLElement {
       step,
     };
 
-    if (!username || !mounted) return;
+    if ((!username && !id) || !mounted) return;
     if (state === STATE_SUCCESS) {
       tempDiv.innerHTML = renderChart(ctx);
     } else if (state === STATE_ERROR) {
@@ -177,10 +186,10 @@ class CodersRankActivity extends HTMLElement {
   }
 
   loadAndRender() {
-    const { username } = this;
+    const { username, id } = this;
     this.state = STATE_LOADING;
     this.render();
-    fetchData(username)
+    fetchData(username, id)
       .then((data) => {
         this.emitData(data);
         this.data = data;
