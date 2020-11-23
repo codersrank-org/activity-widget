@@ -8,7 +8,7 @@ CodersRank Activity Widget is a web component that allows you easily integrate n
 
 ## Install from NPM
 
-Widget script available through NPM:
+The widget script available through NPM:
 
 ```
 npm i @codersrank/activity --save
