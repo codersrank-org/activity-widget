@@ -1,12 +1,14 @@
 # CodersRank Activity Widget
 
+<!-- DOCS_START -->
+
 CodersRank Activity Widget is a web component that allows you easily integrate nice looking activity chart from your [CodersRank](https://codersrank.io) profile to your personal website:
 
 <img src="preview.png" />
 
 ## Install from NPM
 
-Widget script available through NPM:
+The widget script available through NPM:
 
 ```
 npm i @codersrank/activity --save
