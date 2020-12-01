@@ -55,6 +55,7 @@ Widget supports following properties as HTML element attributes:
 | `tooltip`   | `boolean` | `false` | Enables tooltip with number of activities per day   |
 | `step`      | `number`  | `10`    | Number of activities for division by colors         |
 | `svg-width` | `number`  | `800`   | Render width of chart's SVG element                 |
+| `branding`  | `boolean` | `true`  | Displays "Powered by CodersRank" link               |
 
 For example, to enable labels, legend and tooltip:
 
