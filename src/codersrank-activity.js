@@ -141,7 +141,7 @@ class CodersRankActivity extends HTMLElement {
   }
 
   get branding() {
-    return this.getAttribute('labels') !== 'false';
+    return this.getAttribute('branding') !== 'false';
   }
 
   set branding(value) {
