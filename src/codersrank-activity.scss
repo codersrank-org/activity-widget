@@ -21,6 +21,7 @@
   --svg-height: auto;
   --preloader-color: #72a0a8;
   --tooltip-font-size: 14px;
+  --branding-text-color: inherit;
   width: 100%;
   display: block;
   position: relative;
@@ -178,6 +179,37 @@
         background-color: var(--bg-color-4);
         border-color: var(--border-color-4);
       }
+    }
+  }
+  &-legend + &-branding {
+    margin-top: 0.5em;
+  }
+  &-branding {
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 12px;
+    color: var(--branding-text-color);
+    display: flex;
+    a {
+      opacity: 0.5;
+      display: flex;
+      align-items: center;
+      color: inherit;
+      text-decoration: none;
+      transition-duration: 200ms;
+      position: relative;
+      z-index: 1;
+      transform: translate3d(0, 0, 0);
+    }
+    a:hover {
+      opacity: 1;
+    }
+    span {
+      margin-right: 4px;
+    }
+    svg {
+      height: 16px;
+      width: auto;
     }
   }
 }

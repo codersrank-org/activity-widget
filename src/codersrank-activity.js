@@ -140,6 +140,14 @@ class CodersRankActivity extends HTMLElement {
     this.setAttribute('step', value);
   }
 
+  get branding() {
+    return this.getAttribute('labels') !== 'false';
+  }
+
+  set branding(value) {
+    this.setAttribute('branding', value);
+  }
+
   render() {
     const {
       username,
@@ -153,6 +161,7 @@ class CodersRankActivity extends HTMLElement {
       legend,
       labels,
       step,
+      branding,
       tempDiv,
     } = this;
     const ctx = {
@@ -162,6 +171,7 @@ class CodersRankActivity extends HTMLElement {
       legend,
       labels,
       step,
+      branding,
     };
 
     if ((!username && !id) || !mounted) return;

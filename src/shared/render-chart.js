@@ -1,3 +1,5 @@
+import { codersrRankLogo } from './codersrank-logo';
+
 export const renderChart = ({
   data,
   weeks,
@@ -6,6 +8,7 @@ export const renderChart = ({
   labels,
   preloader,
   step,
+  branding,
 } = {}) => {
   const width = svgWidth;
   const spacing = 4;
@@ -174,6 +177,14 @@ export const renderChart = ({
         <span class="codersrank-activity-legend-item codersrank-activity-legend-item-3"></span>
         <span class="codersrank-activity-legend-item codersrank-activity-legend-item-4"></span>
         <span class="codersrank-activity-legend-label">More</span>
+      </div>
+      ` : ''}
+      ${branding ? /* html */`
+      <div class="codersrank-activity-branding">
+        <a href="https://codersrank.io" target="_blank" rel="noopener noreferrer">
+          <span>Powered by </span>
+          ${codersrRankLogo}
+        </a>
       </div>
       ` : ''}
     </div>
