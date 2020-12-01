@@ -68,30 +68,31 @@ It is possible to customize widget colors with CSS Custom Properties (CSS Variab
 
 There are following CSS Custom Properties are available:
 
-| Property               | Value                                                     |
-| ---------------------- | --------------------------------------------------------- |
-| `--font-family`        | `Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif` |
-| `--label-font-size`    | `9px`                                                     |
-| `--label-text-color`   | `#999ea4`                                                 |
-| `--legend-font-size`   | `12px`                                                    |
-| `--legend-text-color`  | `#999ea4`                                                 |
-| `--legend-item-width`  | `14px`                                                    |
-| `--legend-item-height` | `14px`                                                    |
-| `--legend-margin`      | `1em 0 0 0`                                               |
-| `--bg-color-0`         | `#f6f6f6`                                                 |
-| `--bg-color-1`         | `rgba(80, 176, 186, 0.3)`                                 |
-| `--bg-color-2`         | `rgba(80, 176, 186, 0.6)`                                 |
-| `--bg-color-3`         | `rgba(80, 176, 186, 1)`                                   |
-| `--bg-color-4`         | `#24565a`                                                 |
-| `--border-color-0`     | `transparent`                                             |
-| `--border-color-1`     | `transparent`                                             |
-| `--border-color-2`     | `transparent`                                             |
-| `--border-color-3`     | `transparent`                                             |
-| `--border-color-4`     | `transparent`                                             |
-| `--svg-width`          | `100%`                                                    |
-| `--svg-height`         | `auto`                                                    |
-| `--preloader-color`    | `#72a0a8`                                                 |
-| `--tooltip-font-size`  | `14px`                                                    |
+| Property                | Value                                                     |
+| ----------------------- | --------------------------------------------------------- |
+| `--font-family`         | `Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif` |
+| `--label-font-size`     | `9px`                                                     |
+| `--label-text-color`    | `#999ea4`                                                 |
+| `--legend-font-size`    | `12px`                                                    |
+| `--legend-text-color`   | `#999ea4`                                                 |
+| `--legend-item-width`   | `14px`                                                    |
+| `--legend-item-height`  | `14px`                                                    |
+| `--legend-margin`       | `1em 0 0 0`                                               |
+| `--bg-color-0`          | `#f6f6f6`                                                 |
+| `--bg-color-1`          | `rgba(80, 176, 186, 0.3)`                                 |
+| `--bg-color-2`          | `rgba(80, 176, 186, 0.6)`                                 |
+| `--bg-color-3`          | `rgba(80, 176, 186, 1)`                                   |
+| `--bg-color-4`          | `#24565a`                                                 |
+| `--border-color-0`      | `transparent`                                             |
+| `--border-color-1`      | `transparent`                                             |
+| `--border-color-2`      | `transparent`                                             |
+| `--border-color-3`      | `transparent`                                             |
+| `--border-color-4`      | `transparent`                                             |
+| `--svg-width`           | `100%`                                                    |
+| `--svg-height`          | `auto`                                                    |
+| `--preloader-color`     | `#72a0a8`                                                 |
+| `--tooltip-font-size`   | `14px`                                                    |
+| `--branding-text-color` | `inherit`                                                 |
 
 For example, to change legend text color to `red` and font-size to `10px`, add this to CSS stylesheet:
 
