@@ -55,6 +55,7 @@ Widget supports following properties as HTML element attributes:
 | `tooltip`   | `boolean` | `false` | Enables tooltip with number of activities per day   |
 | `step`      | `number`  | `10`    | Number of activities for division by colors         |
 | `svg-width` | `number`  | `800`   | Render width of chart's SVG element                 |
+| `branding`  | `boolean` | `true`  | Displays "Powered by CodersRank" link               |
 
 For example, to enable labels, legend and tooltip:
 
@@ -146,6 +147,33 @@ function onData(event) {
 }
 document.querySelector('#activity').addEventListener('data', onData);
 ```
+
+## Use As Image
+
+It is also possible to insert Activity widget as an image. It is useful in places where you can't integrate web component, or for example on your GitHub profile README.md page.
+
+Image URL is the following:
+
+```
+https://cr-ss-service.azurewebsites.net/api/ScreenShot?widget=activity&username=YOUR_USERNAME
+```
+
+It accepts all widget attributes as query string parameters, plus one extra parameter:
+
+| Name    | Type     | Default | Description                                                                                                                                                                     |
+| ------- | -------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `width` | `number` | `800`   | Width of widget element (generated image). Note that generated image has @2x pixel density, so the PNG image will be actually generated in @2x size from the one specified here |
+| `style` | `string` |         | `style` attribute value (here you can specify all CSS variables)                                                                                                                |
+
+For example:
+
+```html
+<img
+  src="https://cr-ss-service.azurewebsites.net/api/ScreenShot?widget=activity&username=YOUR_USERNAME&labels=true"
+/>
+```
+
+Note that you need to URL Encode some of the characters, for example `#` should be `%23` and `#ff0` color should be specified as `%23ff0` in query.
 
 ## Contribution
 
