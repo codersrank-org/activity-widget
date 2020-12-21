@@ -1,6 +1,6 @@
 {
   "name": "@codersrank/activity",
-  "version": "0.9.12",
+  "version": "0.9.13",
   "description": "CodersRank activity widget",
   "main": "cjs/codersrank-activity.js",
   "module": "esm/codersrank-activity.js",
