@@ -5,7 +5,7 @@ export const fetchData = (username, id) => {
   if (id && cache[id]) return Promise.resolve(cache[id]);
 
   let endpoint = `https://api.codersrank.io/v2/users/${username || id}/activities`;
-  if (id) endpoint += '?id=true';
+  if (id) endpoint += '?get_by=id';
 
   return fetch(endpoint, {
     method: 'GET',
